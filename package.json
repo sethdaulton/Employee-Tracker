@@ -1,5 +1,41 @@
 {
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "dependencies": {
-    "inquirer": "^9.1.4"
-  }
+    "clone": "^1.0.4",
+    "inquirer": "8.2.4",
+    "console.table": "^0.10.0",
+    "defaults": "^1.0.4",
+    "denque": "^2.1.0",
+    "easy-table": "^1.1.0",
+    "generate-function": "^2.3.1",
+    "is-property": "^1.0.2",
+    "long": "^4.0.0",
+    "lru-cache": "^6.0.0",
+    "mysql2": "^2.3.3",
+    "named-placeholders": "^1.1.2",
+    "pseudomap": "^1.0.2",
+    "safer-buffer": "^2.1.2",
+    "seq-queue": "^0.0.5",
+    "sqlstring": "^2.3.3",
+    "wcwidth": "^1.0.1",
+    "yallist": "^4.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sethdaulton/Employee-Tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sethdaulton/Employee-Tracker/issues"
+  },
+  "homepage": "https://github.com/sethdaulton/Employee-Tracker#readme"
 }
