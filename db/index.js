@@ -10,71 +10,59 @@ class DB {
         }
                 
         
-        addEmployee() {
+        addEmployee(employee) {
             // Query database
-            return this.connection.promise().query('INSERT INTO employee', function (err, results) {
-              });
+            return this.connection.promise().query('INSERT INTO employee SET ?', employee);
             }
                 
         
-        updateEmployee() {
+        updateEmployee(employeeId, roleId) {
             // Query database
-            return this.connection.promise().query('UPDATE employee', function (err, results) {
-                  });
+            return this.connection.promise().query('UPDATE employee SET role_id = ? WHERE id = ?',[roleId, employeeId]);
                 }
         
         
         getAllRoles() {
             // Query database
-            return this.connection.promise().query('SELECT * FROM role', function (err, results) {
-                  });
+            return this.connection.promise().query('SELECT role.id, role.title, department.name AS department, role.salary FROM role LEFT JOIN department ON role.department_id = department.id');
                 }
                 
-        addRole() {
+        addRole(role) {
             // Query database
-            return this.connection.promise().query('INSERT INTO role', function (err, results) {
-                  });
+            return this.connection.promise().query('INSERT INTO role SET ?', role );
                 }
         
         getAllDepartments() {
             // Query database
-            return this.connection.promise().query('SELECT * FROM department', function (err, results) {
-                  });
+            return this.connection.promise().query('SELECT department.id, department.name FROM department');
                 }
         
         
-        addDepartment() {
+        addDepartment(department) {
             // Query database
-            return this.connection.promise().query('INSERT INTO department', function (err, results) {
-                  });
+            return this.connection.promise().query('INSERT INTO department SET ?', department);
                 }
         
         
-        deleteDepartment() {
+        deleteDepartment(departmentId) {
             // Query database
-            return this.connection.promise().query('DELETE department', function (err, results) {
-                
-                  });
+            return this.connection.promise().query('DELETE FROM department WHERE id = ?', departmentId);
                 }
         
         
-        deleteRole() {
+        deleteRole(roleId) {
             // Query database
-            return this.connection.promise().query('DELETE role', function (err, results) {
-                  });
+            return this.connection.promise().query('DELETE FROM role WHERE id = ?', roleId);
                 }
         
         
-        deleteEmployee() {
+        deleteEmployee(employeeId) {
             // Query database
-            return this.connection.promise().query('DELETE employee', function (err, results) {
-                  });
+            return this.connection.promise().query('DELETE FROM employee WHERE id = ?', employeeId);
                 }
         
 
 }
-
-
 
     module.exports = new DB(connection);
     

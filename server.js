@@ -4,6 +4,8 @@ require("console.table");
 
 const db = require('./db');
 
+loadMainPrompts()
+
 function loadMainPrompts() {
 
   inquirer.prompt([
@@ -13,81 +15,109 @@ function loadMainPrompts() {
     name: "choices",
     message: "What would you like to do?",
     choices: [
-      "View all employees",
-      "Add employee",
-      "Update Employee Role",
-      "View All Roles",
-      "Add Role",
-      "View All Departments",
-      "Add Department",
-      "Update Employee manager",
-      "View Employees by Manager",
-      "View Employees by Department",
-      "Delete Department",
-      "Delete Role",
-      "Delete Employee",
-      "Quit",
+      {
+        name: "View all employees",
+        value: "VIEW_EMPLOYEES"
+      },
+      {
+        name: "Add employee",
+        value: "ADD_EMPLOYEE"
+      },
+      {
+        name: "Update employee role",
+        value: "UPDATE_EMPLOYEE"
+      },
+      {
+        name: "View all roles",
+        value: "VIEW_ROLES"
+      },
+      {
+        name: "Add role",
+        value: "ADD_ROLE"
+      },
+      {
+        name: "View All Departments",
+        value: "VIEW_DEPARTMENTS"
+      },
+      {
+        name: "Add Department",
+        value: "ADD_DEPARTMENT"
+      },
+      {
+        name: "Delete Employee",
+        value: "DELETE_EMPLOYEE"
+      },
+      {
+        name: "Quit",
+        value: "QUIT"
+      },
+      
+      // "Update Employee manager",
+      // "View Employees by Manager",
+      // "View Employees by Department",
+      // "Delete Department",
+      // "Delete Role",
+      
     ],
   },
 ])
 .then(res => {
   let choice = res.choice
   switch(choice){
-    case "View all employees":
+    case "VIEW_EMPLOYEES":
       viewEmployees();
       break;
 
-      case "Add employee":
+      case "ADD_EMPLOYEE":
         addEmployee();
         break;
 
-        case "Update Employee Role":
+        case "UPDATE_EMPLOYEE":
         updateEmployeeRole();
         break;
 
-        case "View All Roles":
-        viewRoles();
-        break;
+        // case "View All Roles":
+        // viewRoles();
+        // break;
 
-        case "Add Role":
-        addRole();
-        break;
+        // case "Add Role":
+        // addRole();
+        // break;
 
-        case "View All Departments":
-        viewDepartments();
-        break;
+        // case "View All Departments":
+        // viewDepartments();
+        // break;
 
-        case "Add Department":
-        addDepartment();
-        break;
+        // case "Add Department":
+        // addDepartment();
+        // break;
 
-        case "Update Employee manager":
-          updateEmployeeManager();
-          break;
+        // case "Update Employee manager":
+        //   updateEmployeeManager();
+        //   break;
 
-          case "View Employees by Manager":
-          viewEmployeesByManager();
-          break;
+        //   case "View Employees by Manager":
+        //   viewEmployeesByManager();
+        //   break;
 
-          case "View Employees by Department":
-          viewEmployeesByDepartment();
-          break;
+        //   case "View Employees by Department":
+        //   viewEmployeesByDepartment();
+        //   break;
 
-          case "Delete Department":
-            deleteDepartment();
-            break;
+        //   case "Delete Department":
+        //     deleteDepartment();
+        //     break;
 
-            case "Delete Role":
-              deleteRole();
-              break;
+        //     case "Delete Role":
+        //       deleteRole();
+        //       break;
 
-              case "Delete Employee":
-                deleteEmployee();
-                break;
+              // case "Delete Employee":
+              //   deleteEmployee();
+              //   break;
 
-                case "Quit":
-                quit();
-                break;
+                // default:
+                // quit();
   }
 })
 }
@@ -117,4 +147,9 @@ function updateEmployeeRole() {
     console.table(employees)
   })
   .then(()=>loadMainPrompts())
+}
+
+function quit() {
+  console.log("Thanks for using the Employee Tracker!")
+  process.exit()
 }
