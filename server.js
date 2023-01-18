@@ -62,9 +62,11 @@ function loadMainPrompts() {
   },
 ])
 .then(res => {
-  let choice = res.choice
+  let choice = res.choices
+  console.log(res)
   switch(choice){
     case "VIEW_EMPLOYEES":
+      console.log("Outside of view employee")
       viewEmployees();
       break;
 
@@ -116,8 +118,8 @@ function loadMainPrompts() {
               //   deleteEmployee();
               //   break;
 
-                // default:
-                // quit();
+                default:
+                quit();
   }
 })
 }
@@ -132,6 +134,7 @@ function viewEmployees() {
 }
 
 function addEmployee() {
+  // prompt data goes here
   db.addEmployee()
   .then(([rows])=>{
     let employees = rows
